@@ -1,0 +1,35 @@
+<md-sidenav-container>
+
+  <md-sidenav #sidenav class="app-sidenav">
+    <ul (click)="sidenav.toggle()">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/cash-flow">Cash-flow</a></li>
+      <li><a routerLink="/parameter">Parameter</a> </li>
+      <li><a routerLink="/clients">ClientsComp</a></li>
+      <li>
+        <a>Utils Examples</a>
+        <ul>
+          <li><a routerLink="/modalbox">Modalboxes</a></li>
+          <li><a routerLink="/messages">Messages</a></li>
+          <li><a routerLink="/loading-bar">Loading Bar</a></li>
+        </ul>
+      </li>
+    </ul>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    <span>Cash Flow</span>
+    <span class="app-toolbar-filler"></span>
+    <i class="material-icons app-toolbar-menu">https</i>
+  </md-toolbar>
+  <ng2-slim-loading-bar></ng2-slim-loading-bar>
+
+  <main class="router-content">
+    <ng2-toasty [position]="toastyComponentPosition"></ng2-toasty>
+    <router-outlet></router-outlet>
+  </main>
+
+</md-sidenav-container>

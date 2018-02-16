@@ -1,0 +1,17 @@
+<div class='{{type}}' id="dialogBox">
+    <div class="dialogHeadline">
+        <span>{{ title }}</span>
+    </div>
+
+    <p>{{ message }}</p>
+
+    <button type="button" md-raised-button class="main"
+        (click)="dialogRef.close(true)">
+        <ng-container *ngFor="let class of classColors"> 
+          <md-icon *ngIf="class.name==type" class="md-24">{{class.icon}}</md-icon>
+        </ng-container>  {{confirmTextBtn}}  </button>
+
+    <button *ngIf="type!='infoDialog' && type!='warningDialog'" type="button" md-button
+        (click)="dialogRef.close()"><md-icon class="md-24"> cancel </md-icon> {{cancelTextBtn}}</button>
+
+</div>

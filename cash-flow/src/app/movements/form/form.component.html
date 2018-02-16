@@ -1,0 +1,114 @@
+<!--* Structural directives-->
+<div>
+<form [formGroup]="moveForm" *ngIf="active" (ngSubmit)="onSubmit()">
+  <md-card>
+    <!-- Label-->
+    <div class="form-group">
+      <md-input-container>
+        <input mdInput type="text" class="form-control" id="label" formControlName="label"             
+               [(ngModel)]="movement.label"              
+               placeholder="Label">
+      </md-input-container>
+      <div *ngIf="formErrors.label" class="alert alert-danger">
+        {{ formErrors.label }}
+      </div>
+    </div>
+    <!-- Date-->    
+    <div class="form-group">      
+      <md-input-container>
+        <input mdInput type="date" class="form-control" id="date" formControlName="date"
+               [(ngModel)]="movement.date"               
+               placeholder="Date Movement">
+      </md-input-container>
+      <div *ngIf="formErrors.date" class="alert alert-danger">
+        {{ formErrors.date }}
+      </div>
+    </div>
+    <!-- Amount -->
+    <div class="form-group">    
+      <md-input-container>
+        <input mdInput type="number" class="form-control" id="amount" formControlName="amount"
+               [(ngModel)]="movement.amount"               
+               placeholder="Amount">
+      </md-input-container>
+      <div *ngIf="formErrors.amount" class="alert alert-danger">
+        {{ formErrors.amount }}
+      </div>
+    </div>
+    <!-- Kind-->
+    <div class="form-group">
+      <label >Type of Movement</label>
+      <md-radio-group class="form-control" id="kind" formControlName="kind"          
+          [(ngModel)]="movement.kind"
+          (ngModelChange)="userChangeTypeOption()">
+          <md-radio-button *ngFor="let kind of kinds" [value]="kind.id">
+            <span> {{ kind.text }} </span> 
+          </md-radio-button>  
+      </md-radio-group>    
+      <div *ngIf="formErrors.kind" class="alert alert-danger">
+        {{ formErrors.kind }}
+      </div>
+    </div>
+    <!-- Category-->
+    <div class="form-group">
+      <md-select class="form-control" id="category" formControlName="category"
+          placeholder="Category"            
+          [(ngModel)]="movement.category">
+          <md-option 
+                *ngFor="let category of categories"
+                [value]="category.id"> 
+                {{category.text}} 
+            </md-option>
+      </md-select>
+      <div *ngIf="formErrors.category" class="alert alert-danger">
+        {{ formErrors.category }}
+      </div>
+    </div>
+    <!-- Paid-->
+    <div class="form-group">
+      <md-slide-toggle  formControlName="paid" 
+                        [(ngModel)]="movement.paid"
+                        (ngModelChange)="toggleSliderInput()">
+        Paid
+      </md-slide-toggle>
+    </div>
+    <!-- Topay-->
+    <div class="form-group" [hidden]="movement.paid==false">
+      <label >Pay in {{ movement.topay }} days  </label>
+      <md-slider [(ngModel)]="movement.topay" formControlName="topay"
+          class="example-margin"
+          [disabled]="disabled"
+          [invert]="invert"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [thumb-label]="thumbLabel"
+          [tick-interval]="tickInterval"
+          [value]="movement.topay"
+          [vertical]="vertical">
+      </md-slider>
+    </div>
+    <md-divider></md-divider>
+
+    <div>
+      <button type="submit" [disabled]="!moveForm.valid" *ngIf="!movement._id" md-button color="primary" (click)="UserSaveMovement()" mdTooltip="Create a new entry"><md-icon class="md-24">check</md-icon> Create Movement</button>
+      <button type="submit" [disabled]="!moveForm.valid" *ngIf="movement._id" md-button color="primary" (click)="UserSaveMovement()" mdTooltip="Update this entry"><md-icon class="md-24">save</md-icon> Update Movement</button>
+      <button md-button color="primary" (click)="clearForm()"  mdTooltip="Restart the forms values"><md-icon class="md-24">delete forever</md-icon> Clear Form</button>
+    </div>
+ 
+  </md-card>
+
+  <md-card>
+   
+    <br>
+    {{ movement | json}}
+    <br>
+    <br>
+    {{ kinds | json}}
+    <br>
+    <br>
+    {{ categories | json}}
+  </md-card>
+
+</form>
+</div>

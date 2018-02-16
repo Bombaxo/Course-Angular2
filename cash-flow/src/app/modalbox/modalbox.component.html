@@ -1,0 +1,38 @@
+
+<h2>Example of Dialog box type</h2>
+
+<md-list>
+  <h3 md-subheader>Success Dialog</h3>
+  <md-list-item >
+    <md-icon md-list-icon class="md-24">done</md-icon>
+    <h4 md-line>Confirm or cancel an Action to Save, Insert...</h4>
+    <span (click)="openDialogSuccess()" md-line md-button>Open Dialog</span>
+  </md-list-item>
+
+  <md-divider></md-divider>
+
+  <h3 md-subheader>Delete Dialog</h3>
+  <md-list-item >
+    <md-icon md-list-icon class="md-24">delete</md-icon>
+    <h6 md-line>Confirm or cancel an Action to Delete...</h6>
+    <span (click)="openDialogDelete()" md-line md-button>Open Dialog</span>
+  </md-list-item>
+
+  <md-divider></md-divider>
+
+  <h3 md-subheader>Warning Dialog</h3>
+  <md-list-item >
+    <md-icon md-list-icon class="md-24">info outline</md-icon>
+    <h6 md-line>Confirm or cancel an Action to asure the user understood the action...</h6>
+    <span (click)="openDialogWarning()" md-line md-button>Open Dialog</span>
+  </md-list-item>
+
+  <md-divider></md-divider>
+
+  <h3 md-subheader>Info Dialog</h3>
+  <md-list-item >
+    <md-icon md-list-icon class="md-24">warning</md-icon>
+    <h6 md-line>Show some information that should be accepted by user</h6>
+    <span (click)="openDialogInfo()" md-line md-button>Open Dialog</span>
+  </md-list-item>
+</md-list>

@@ -1,0 +1,41 @@
+<!--No async needed anymore -->
+<!--los pipes se pueden entubar-->
+<md-card>
+  <md-list>
+    <h2 md-line>Last Movements</h2>
+    <md-list-item *ngFor="let movement of movements">    
+      <div md-line>
+        <span *ngIf="movement.kind==1"> <md-icon class="md-24">redo</md-icon> </span>
+        <span *ngIf="movement.kind==2"> <md-icon class="md-24">undo</md-icon> </span>
+        <span *ngIf="movement.kind==3"> <md-icon class="md-24">publish</md-icon> </span>
+        
+        <span> {{movement.label}} </span>
+
+        <span> {{movement.amount}} € </span>
+
+        <span *ngIf="movement.paid==true" class="paid">Paid</span>
+        <span *ngIf="movement.paid==false" class="pending">Pending</span>
+
+        <span> {{movement.date | date}} </span>
+
+        <span (click)='userRemoveIdMovement(movement._id)' mdTooltip="Delete Movement"><md-icon class="md-24">delete forever</md-icon></span>
+        <span (click)='getMovementForm(movement._id)' mdTooltip="Edit Movement"><md-icon class="md-24">mode edit</md-icon></span>
+
+      <div md-line>
+
+        <span *ngFor="let kind of kinds"> 
+          <span *ngIf="movement.kind==kind.id">{{kind.text}}</span>
+        </span>        
+
+        <span *ngFor="let category of categories">       
+          <span *ngIf="(movement.kind==category.type) && (movement.category==category.id)">{{category.text}}</span>
+        </span> 
+
+        <span *ngIf="movement.topay!=0">( To pay in {{movement.topay}} days )</span>
+      </div>
+      </div>
+    </md-list-item>
+  </md-list>
+
+</md-card>
+

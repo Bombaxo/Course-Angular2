@@ -1,0 +1,10 @@
+
+.list-movements,
+.form-movements{
+    float: left;
+    width: 47%;
+}
+
+.form-movements{
+    margin-right: 3%;
+}

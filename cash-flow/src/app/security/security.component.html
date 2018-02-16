@@ -1,0 +1,20 @@
+<md-card>
+  <md-input-container>
+    <input mdInput placeholder="Email" type="email" [(ngModel)]="user.email">
+  </md-input-container>
+  <p></p>
+  <md-input-container>
+    <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password">
+  </md-input-container>
+  <p>
+  </p>
+  <div class="button-row">
+    <button md-raised-button color="primary" (click)="registerUser()">Sing up</button>    
+    <button md-raised-button color="accent" (click)="loginUser()">Login</button>
+  </div>
+  <p>
+  </p>
+  <md-chip-list>
+    <md-chip color="warn" selected="true">{{ mensaje }}</md-chip>
+  </md-chip-list>
+</md-card>

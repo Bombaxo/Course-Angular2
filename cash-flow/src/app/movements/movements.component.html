@@ -1,0 +1,26 @@
+<h2> Cash-Flow</h2>
+
+<!-- Calling to sibling component "Form" -->
+<!-- Dependency injection from child components -->
+<div class="form-movements">
+    <mov-form 
+        [kinds]="kindsInContainer"
+        [categories]="categories"
+        [movement]="movement"
+        (userSave)="saveMovement()"
+        (userChangeKind)="changeKindMovement()"        
+        (clearFormValues)="clearForm()">
+    </mov-form>
+</div>
+
+<!-- Calling to child component "List" -->
+<!-- Dependency injection from child components -->
+<div class="list-movements">
+    <list
+        (requestMovement)="bringMovId($event)"
+        (userRemoveMovemment)="removeMovId($event)"
+        [movements]="movements"
+        [kinds]="kindsInContainer"
+        [categories]="allCategories">
+    </list>
+</div>
